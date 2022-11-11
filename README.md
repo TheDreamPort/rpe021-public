@@ -23,11 +23,13 @@ This simple Python script leverages the FastAPI framework to demonstrate the RES
 The script was developed to validate the REST API and JSON schema. It is being shared to demonstrate a working example **and** annotations indicating which parts of the API (e.g., outputs from each API endpoint) are important to the competition.
 
 To run the script on Linux:
-1. `python3 -m venv venv`
-2. `source venv/bin/activate`
-3. `pip install wheel`
-4. `pip install fastapi[all]`
-5. `uvicorn rpe021_example:app --debug`
+
+        python3 -m venv venv
+        source venv/bin/activate
+        pip install wheel fastapi[all]
+        uvicorn rpe021_example:app --debug
+
+The REST API can then be invoked, e.g., `curl http://127.0.0.1:8000/elements`.
 
 ## Questions?
 
