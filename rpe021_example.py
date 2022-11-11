@@ -20,9 +20,9 @@ elements = {}
 class Interface(BaseModel):
     label: str
     interface_id: str
-    ipv4: str
-    ipv6: str
-    mac: str
+    ipv4: Optional[str]
+    ipv6: Optional[str]
+    mac: Optional[str]
 
 # Structure for a network element - network, endpoint, or connection
 class Element(BaseModel):
