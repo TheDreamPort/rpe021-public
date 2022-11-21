@@ -56,32 +56,25 @@ def get_all_elements():
         elem_list.append(elem)
     return {'elements': elem_list}
 
-@app.get('/elements/{id}')
-def get_element(id: str):
-    """Return a single element, or 404 if ID is not found."""
-    element = find_element(id)
-    return element
-
-@app.post('/elements')
-def add_element(element: Element):
-    """Add a single element, or 400 if ID already exists."""
-    #print('element: ' + str(element))
-    id = element.id
-    if id not in elements:
-        elements[id] = element
-        # NOTE: Output is not significant, just the HTTP response code (200/4xx)
-        return element
+@app.post('/elements', status_code=201)
+def add_element(elem_list: List[Element]):
+    """Add a list of elements, or 400 if ID already exists."""
+    print('elements: ' + str(elem_list))
+    response = {}
+    anySuccess = False
+    for element in elem_list:
+        id = element.id
+        if id not in elements:
+            elements[id] = element
+            response[id] = "/element/" + id
+            anySuccess = True
+        else:
+            response[id] = "Element already exists"
+    
+    if anySuccess:
+        return response
     else:
-        raise HTTPException(status_code=400, detail='Element ID already exists')
-
-@app.put('/elements/{id}')
-def update_element(element: Element):
-    """Update an existing element, or 404 if ID is not found."""
-    id = element.id
-    origElement = find_element(id)
-    elements[id] = element
-    # NOTE: Output is not significant, just the HTTP response code (200/4xx)
-    return {"orig_element": origElement, "new_element": element}
+        raise HTTPException(status_code=403, detail=str(response))
 
 @app.delete('/elements')
 def delete_all_elements():
@@ -90,7 +83,33 @@ def delete_all_elements():
     # NOTE: Output is not significant, just the HTTP response code (200)
     return {'elements': []}
 
-@app.delete('/elements/{id}')
+@app.get('/element/{id}')
+def get_element(id: str):
+    """Return a single element, or 404 if ID is not found."""
+    element = find_element(id)
+    return element
+
+@app.post('/element', status_code=201)
+def add_element(element: Element):
+    """Add a single element, or 400 if ID already exists."""
+    #print('element: ' + str(element))
+    id = element.id
+    if id not in elements:
+        elements[id] = element
+        return {id: "/element/" + id}
+    else:
+        raise HTTPException(status_code=400, detail='Element ID already exists')
+
+@app.put('/element/{id}')
+def update_element(element: Element):
+    """Update an existing element, or 404 if ID is not found."""
+    id = element.id
+    origElement = find_element(id)
+    elements[id] = element
+    # NOTE: Output is not significant, just the HTTP response code (200/4xx)
+    return {"orig_element": origElement, "new_element": element}
+
+@app.delete('/element/{id}')
 def delete_element(id: str):
     """Delete an existing element, or 404 if ID is not found."""
     element = find_element(id)
