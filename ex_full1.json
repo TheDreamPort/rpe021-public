@@ -1,0 +1,41 @@
+[
+    {
+        "id": "dmz_1",
+        "timestamp": "2022-11-10T15:14:00",
+        "label": "DMZ",
+        "color": "red",
+        "data": "",
+        "elem_type": "network",
+        "cidr_block": "192.168.200.0/24"
+    },
+    {
+        "id": "wordpress_1",
+        "timestamp": "2022-11-10T15:14:00",
+        "label": "WordPress",
+        "color": "red",
+        "data": "",
+        "elem_type": "endpoint",
+        "endpoint_type": "server",
+        "os_type": "linux",
+        "network": "dmz_1",
+        "interfaces": [
+          {
+            "label": "eth0",
+            "interface_id": "wordpress_1_eth0",
+            "ipv4": "192.168.200.10",
+            "mac": "00:01:02:03:04:05"
+          }
+        ]
+    },
+    {
+        "id": "ssh_tunnel_1",
+        "timestamp": "2022-11-10T15:14:00",
+        "label": "SSH <Natasha>",
+        "color": "red",
+        "data": "Operator: Natasha",
+        "elem_type": "connection",
+        "interface_from": "wordpress_1_eth0",
+        "interface_to": "redirector_1_eth0",
+        "line_type": "solid"
+    }
+]

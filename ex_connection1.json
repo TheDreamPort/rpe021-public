@@ -1,0 +1,11 @@
+{
+    "id": "ssh_tunnel_1",
+    "timestamp": "2022-11-10T15:14:00",
+    "label": "SSH <Natasha>",
+    "color": "red",
+    "data": "Operator: Natasha",
+    "elem_type": "connection",
+    "interface_from": "wordpress_1_eth0",
+    "interface_to": "redirector_1_eth0",
+    "line_type": "solid"
+}

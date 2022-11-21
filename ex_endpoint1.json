@@ -1,0 +1,19 @@
+{
+    "id": "wordpress_1",
+    "timestamp": "2022-11-10T15:14:00",
+    "label": "WordPress",
+    "color": "red",
+    "data": "",
+    "elem_type": "endpoint",
+    "endpoint_type": "server",
+    "os_type": "linux",
+    "network": "dmz_1",
+    "interfaces": [
+      {
+        "label": "eth0",
+        "interface_id": "wordpress_1_eth0",
+        "ipv4": "192.168.200.10",
+        "mac": "00:01:02:03:04:05"
+      }
+    ]
+}

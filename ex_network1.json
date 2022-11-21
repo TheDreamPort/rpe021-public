@@ -1,0 +1,9 @@
+{
+    "id": "dmz_1",
+    "timestamp": "2022-11-10T15:14:00",
+    "label": "DMZ",
+    "color": "red",
+    "data": "",
+    "elem_type": "network",
+    "cidr_block": "192.168.200.0/24"
+}
