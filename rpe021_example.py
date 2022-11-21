@@ -83,6 +83,13 @@ def delete_all_elements():
     # NOTE: Output is not significant, just the HTTP response code (200)
     return {'elements': []}
 
+@app.get('/image')
+def get_image():
+    """Return the current visualization as a static image file."""
+    # This script just demonstrates the REST API - great visualizations are
+    # the job of our participants!
+    raise HTTPException(status_code=404, detail="Not implemented")
+
 @app.get('/element/{id}')
 def get_element(id: str):
     """Return a single element, or 404 if ID is not found."""
