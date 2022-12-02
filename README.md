@@ -31,6 +31,8 @@ To run the script on Linux:
 
 The REST API can then be invoked, e.g., `curl http://127.0.0.1:8000/elements`.
 
+Alternatively, a simple [Dockerfile](/Dockerfile) is provided.
+
 ## Questions?
 
 Please contact [rpe-submission@dreamport.tech](mailto:rpe-submission@dreamport.tech) with any questions.
