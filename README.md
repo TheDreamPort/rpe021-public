@@ -27,7 +27,7 @@ To run the script on Linux:
         python3 -m venv venv
         source venv/bin/activate
         pip install wheel fastapi[all]
-        uvicorn rpe021_example:app --debug
+        uvicorn rpe021_example:app
 
 The REST API can then be invoked, e.g., `curl http://127.0.0.1:8000/elements`.
 
