@@ -1,6 +1,6 @@
 # DreamPort RPE-021 Public Files
 
-Welcome to DreamPort RPE-021, a penetration testing visualization challenge!
+Welcome to [DreamPort RPE-021](https://dreamport.tech/events/event-rpe-021-visualizing-the-future.php), "Visualizing the Future", a penetration testing visualization challenge!
 
 ## Provided Files
 
@@ -29,9 +29,15 @@ To run the script on Linux:
         pip install wheel fastapi[all]
         uvicorn rpe021_example:app
 
-The REST API can then be invoked, e.g., `curl http://127.0.0.1:8000/elements`.
+Alternatively, a simple [Dockerfile](/Dockerfile) is provided to build and run as a Docker container:
 
-Alternatively, a simple [Dockerfile](/Dockerfile) is provided.
+        docker build . -t rpe021-example
+        docker run rpe021-example
+
+The REST API can then be invoked as desired:
+
+        curl http://127.0.0.1:8000/elements
+        curl -X POST -H "Content-type: application/json" -d @ex_full1.json http://172.17.0.2/elements
 
 ## Questions?
 
