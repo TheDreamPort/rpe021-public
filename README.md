@@ -32,7 +32,7 @@ To run the script on Linux:
 Alternatively, a simple [Dockerfile](/Dockerfile) is provided to build and run as a Docker container:
 
         docker build . -t rpe021-example
-        docker run rpe021-example
+        docker run -d rpe021-example
 
 The REST API can then be invoked as desired:
 
