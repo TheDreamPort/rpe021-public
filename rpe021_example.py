@@ -58,18 +58,17 @@ def get_all_elements():
 
 @app.post('/elements', status_code=201)
 def add_element(elem_list: List[Element]):
-    """Add a list of elements, or 400 if ID already exists."""
+    """Add or update a list of elements."""
     print('elements: ' + str(elem_list))
     response = {}
     anySuccess = False
     for element in elem_list:
         id = element.id
-        if id not in elements:
-            elements[id] = element
-            response[id] = "/element/" + id
-            anySuccess = True
-        else:
-            response[id] = "Element already exists"
+        # NOTE: Older API version only allowed new elements and rejected
+        # changes to existing elements
+        elements[id] = element
+        response[id] = "/element/" + id
+        anySuccess = True
     
     if anySuccess:
         return response
