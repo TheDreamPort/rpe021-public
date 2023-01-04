@@ -7,7 +7,7 @@ valid JSON data will be sent to competitor solutions.
 Copyright 2022, Maryland Innovation and Security Institute
 """
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel
@@ -82,12 +82,12 @@ def delete_all_elements():
     # NOTE: Output is not significant, just the HTTP response code (200)
     return {'elements': []}
 
-@app.get('/image')
+@app.get('/image', response_class=Response)
 def get_image():
     """Return the current visualization as a static image file."""
     # This script just demonstrates the REST API - great visualizations are
     # the job of our participants!
-    raise HTTPException(status_code=404, detail="Not implemented")
+    return Response(content="not-a-png-file", media_type="image/png", status_code=200)
 
 @app.get('/element/{id}')
 def get_element(id: str):
