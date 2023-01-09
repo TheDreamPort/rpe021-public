@@ -39,6 +39,24 @@ The REST API can then be invoked as desired:
         curl http://127.0.0.1:8000/elements
         curl -X POST -H "Content-type: application/json" -d @ex_full1.json http://172.17.0.2/elements
 
+### Server Validation and REST Client
+
+Repo link: [validate_server.py](/server_validation_v1.0/validate_server.py)
+Repo link: [rpe21_client.py](/server_validation_v1.0/rpe21_client.py)
+
+The REST API server validation script uses the Python `unittest` framework to validate compatibility of a specified REST API implementation with expectations for RPE-021. The only non-standard dependency is `requests`, which is identified in the [requirements.txt](/server_validation_v1.0/requirements.txt) file and is easily installed via `pip`.
+
+To run the script on Linux:
+
+        python3 -m venv venv
+        source ven/bin/activate
+        pip install -r requirements.txt
+        ./validate_server.py http://competitor.com/rpe21_base
+
+If necessary, edit `validate_server.py` where indicated to add any custom headers, e.g., `X-API-Key` for a required API key.
+
+**IMPORTANT**: If you believe any changes need to be made to `rpe021_client.py` for compatibility with your REST API, please [contact us](mailto:rpe-submission@dreamport.tech) ASAP! We are NOT planning to accommodate custom REST client scripts -- we plan to use `rpe21_client.py` as is for all competitors, supplying only the base URL and a map of any custom HTTP headers.
+
 ## Questions?
 
 Please contact [rpe-submission@dreamport.tech](mailto:rpe-submission@dreamport.tech) with any questions.
