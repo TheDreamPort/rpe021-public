@@ -30,7 +30,7 @@ class Element(BaseModel):
     timestamp: datetime
     label: str
     color: str
-    data: str
+    data: Optional[str]
     elem_type: str
 
     # Fields for Network
