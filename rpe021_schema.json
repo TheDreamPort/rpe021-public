@@ -3,12 +3,13 @@
     "$id": "https://github.com/TheDreamPort/rpe021-public/rpe021_schema.json",
     "title": "RPE-021 Schema",
     "description": "Schema for network element / activity visualization",
+    "version": "1.0.1",
     "type": "object",
     "properties": {
         "id": { "type": "string" },
         "timestamp": { "type": "string", "format": "date-time" },
         "label": { "type": "string" },
-        "color": { "enum": ["red", "blue", "gray", "black", "white", "orange", "yellow"] },
+        "color": { "enum": ["red", "blue", "gray", "black", "white", "orange", "yellow", "green"] },
         "data": { "type": "string" },
         "elem_type": { "enum": ["network", "endpoint", "connection"] }
     },
