@@ -183,11 +183,12 @@ def generateNetwork(args):
         allElements.append(endpoints[ip])
     
     # If there are at least two endpoints, create some example connections
+    epList = allElements[1:] # copy the list so we don't try to connect to a connection!
     if args.example_connections and len(endpoints) >= 2:
         lineTypes = ["solid", "dashed"]
         for i in range(2):
-            from_ep = random.choice(allElements[1:])
-            to_ep = random.choice(allElements[1:])
+            from_ep = random.choice(epList)
+            to_ep = random.choice(epList)
             conn = { 'id': 'connection%d' % (i,), 'label': 'ExConn%d' % (i,), 'timestamp': timestamp,
                 'color': 'orange', 'line_type': lineTypes[i % 2], 'data': '', 'elem_type': 'connection',
                 'interface_from': from_ep['interfaces'][0]['interface_id'],
