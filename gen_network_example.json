@@ -1,0 +1,166 @@
+[
+    {
+        "id": "example",
+        "label": "example",
+        "timestamp": "2023-01-13T15:31:58",
+        "color": "red",
+        "elem_type": "network",
+        "data": "",
+        "cidr_block": "192.168.1.0/24"
+    },
+    {
+        "id": "192.168.1.1",
+        "label": "192.168.1.1",
+        "timestamp": "2023-01-13T15:31:58",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "endpoint_type": "router",
+        "os_type": "linux",
+        "network": "example",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.1.1_eth0",
+                "ipv4": "192.168.1.1",
+                "mac": "00:0e:c7:e3:11:c0"
+            }
+        ]
+    },
+    {
+        "id": "192.168.1.112",
+        "label": "192.168.1.112",
+        "timestamp": "2023-01-13T15:31:58",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "endpoint_type": "server",
+        "os_type": "windows",
+        "network": "example",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.1.112_eth0",
+                "ipv4": "192.168.1.112",
+                "mac": "00:0f:10:39:11:2b"
+            }
+        ]
+    },
+    {
+        "id": "192.168.1.117",
+        "label": "192.168.1.117",
+        "timestamp": "2023-01-13T15:31:58",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "endpoint_type": "workstation",
+        "os_type": "macosx",
+        "network": "example",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.1.117_eth0",
+                "ipv4": "192.168.1.117",
+                "mac": "00:04:8b:eb:35:76"
+            }
+        ]
+    },
+    {
+        "id": "192.168.1.153",
+        "label": "192.168.1.153",
+        "timestamp": "2023-01-13T15:31:58",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "endpoint_type": "workstation",
+        "os_type": "windows",
+        "network": "example",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.1.153_eth0",
+                "ipv4": "192.168.1.153",
+                "mac": "00:04:2d:77:5f:07"
+            }
+        ]
+    },
+    {
+        "id": "192.168.1.175",
+        "label": "192.168.1.175",
+        "timestamp": "2023-01-13T15:31:58",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "endpoint_type": "workstation",
+        "os_type": "windows",
+        "network": "example",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.1.175_eth0",
+                "ipv4": "192.168.1.175",
+                "mac": "00:05:a7:c3:80:ad"
+            }
+        ]
+    },
+    {
+        "id": "192.168.1.214",
+        "label": "192.168.1.214",
+        "timestamp": "2023-01-13T15:31:58",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "endpoint_type": "server",
+        "os_type": "linux",
+        "network": "example",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.1.214_eth0",
+                "ipv4": "192.168.1.214",
+                "mac": "00:0b:ec:48:fd:e0"
+            }
+        ]
+    },
+    {
+        "id": "192.168.1.30",
+        "label": "192.168.1.30",
+        "timestamp": "2023-01-13T15:31:58",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "endpoint_type": "workstation",
+        "os_type": "linux",
+        "network": "example",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.1.30_eth0",
+                "ipv4": "192.168.1.30",
+                "mac": "00:00:aa:50:90:c9"
+            }
+        ]
+    },
+    {
+        "id": "connection0",
+        "label": "ExConn0",
+        "timestamp": "2023-01-13T15:31:58",
+        "color": "orange",
+        "line_type": "solid",
+        "data": "",
+        "elem_type": "connection",
+        "interface_from": "192.168.1.153_eth0",
+        "interface_to": "192.168.1.214_eth0"
+    },
+    {
+        "id": "connection1",
+        "label": "ExConn1",
+        "timestamp": "2023-01-13T15:31:58",
+        "color": "orange",
+        "line_type": "dashed",
+        "data": "",
+        "elem_type": "connection",
+        "interface_from": "192.168.1.1_eth0",
+        "interface_to": "192.168.1.175_eth0"
+    }
+]
