@@ -27,11 +27,15 @@ def generateNetwork(args):
     # Generate the network element
     network = { 'id': name, 'label': name, 'timestamp': timestamp, 'color': 'red', 'elem_type': 'network',
         'data': '', 'cidr_block': args.cidr_block }
-    print(json.dumps(network, indent=4) + ",")
+    
+    allElements = [ network ]
 
     # Create all possible IPs to draw from
     allIps = [str(ip) for ip in ipaddress.IPv4Network(args.cidr_block)]
     allIps.pop(0) # throw away .0
+
+    # Use a map of IPs to endpoints so they can be sorted in the array
+    endpoints = {}
 
     # Routers
     for i in range(args.routers):
@@ -42,7 +46,7 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': 'router', 'os_type': 'linux',
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
 
     # Switches
     switch_os = ["linux", "unknown"]
@@ -54,7 +58,7 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': 'switch', 'os_type': random.choice(switch_os),
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
 
     # Firewalls
     fw_os = ["linux", "unknown"]
@@ -66,7 +70,7 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': 'firewall', 'os_type': random.choice(fw_os),
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
 
     # Wireless access points
     wap_os = ["linux", "android", "unknown"]
@@ -78,7 +82,7 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': 'wap', 'os_type': random.choice(wap_os),
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
 
     # Linux workstations
     for i in range(args.wslinux):
@@ -95,7 +99,7 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': 'workstation', 'os_type': os_type,
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
 
     # Windows workstations
     for i in range(args.wswin):
@@ -107,7 +111,7 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': 'workstation', 'os_type': 'windows',
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
 
     # Linux servers
     for i in range(args.svrlinux):
@@ -119,7 +123,7 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': 'server', 'os_type': 'linux',
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
 
     # Windows servers
     for i in range(args.svrwin):
@@ -131,7 +135,7 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': 'server', 'os_type': 'windows',
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
     
     # ICS
     ics_os = [ "unknown", "linux" ]
@@ -144,7 +148,7 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': "ics_device", 'os_type': random.choice(ics_os),
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
     
     # IoT
     iot_os = [ "unknown", "linux", "android" ]
@@ -157,7 +161,7 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': "iot_device", 'os_type': random.choice(iot_os),
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
     
     # Phones
     phone_os = [ "android", "ios" ]
@@ -170,7 +174,28 @@ def generateNetwork(args):
         endpoint = { 'id': ip, 'label': ip, 'timestamp': timestamp, 'color': 'gray', 'data': "",
             'elem_type': 'endpoint', 'endpoint_type': "workstation", 'os_type': random.choice(phone_os),
             'network': name, 'interfaces': [ generateInterface(ip, ip) ] }
-        print(json.dumps(endpoint, indent=4) + ",")
+        endpoints[ip] = endpoint
+    
+    # Add endpoints to allElements sorted by IP address
+    epIPs = list(endpoints.keys())
+    epIPs.sort()
+    for ip in epIPs:
+        allElements.append(endpoints[ip])
+    
+    # If there are at least two endpoints, create some example connections
+    if args.example_connections and len(endpoints) >= 2:
+        lineTypes = ["solid", "dashed"]
+        for i in range(2):
+            from_ep = random.choice(allElements[1:])
+            to_ep = random.choice(allElements[1:])
+            conn = { 'id': 'connection%d' % (i,), 'label': 'ExConn%d' % (i,), 'timestamp': timestamp,
+                'color': 'orange', 'line_type': lineTypes[i % 2], 'data': '', 'elem_type': 'connection',
+                'interface_from': from_ep['interfaces'][0]['interface_id'],
+                'interface_to': to_ep['interfaces'][0]['interface_id'] }
+            allElements.append(conn)
+    
+    # Print all elements as an array (can then send via `curl` or rpe021_client.py)
+    print(json.dumps(allElements, indent=4))
 
 
 if __name__ == '__main__':
@@ -188,6 +213,7 @@ if __name__ == '__main__':
     parser.add_argument('--ics', type=int, default=0, help="number of ICS devices")
     parser.add_argument('--iot', type=int, default=0, help="number of IoT devices")
     parser.add_argument('--phones', type=int, default=0, help="number of phones")
+    parser.add_argument('--example_connections', action='store_true', help="create example connections")
     args = parser.parse_args()
 
     generateNetwork(args)
