@@ -76,6 +76,12 @@ class TestRestApi(unittest.TestCase):
 
     @unittest.expectedFailure
     def test_add_invalid_type(self):
+        # NOTE: The "expectedFailure" is due to limitations in my example REST API
+        # in rpe021_example.py. A more robust implementation would perform better
+        # input validation. If your implementation validates "elem_type", remove the
+        # expectedFailure decorator above. There could obviously be a much larger
+        # suite of tests for input validation, but since I didn't have time to
+        # implement the validation, I also didn't have time to implement the tests.
         elem = json.loads(self.DMZ_1)
         elem["elem_type"] = "not_valid"
         url = self.client.addElement(elem)
@@ -109,7 +115,7 @@ class TestRestApi(unittest.TestCase):
         dmz1 = json.loads(self.DMZ_1)
         url = self.client.addElement(dmz1)
         self.assertEqual(url, "/element/dmz_1")
-        dmz1["color"] = "green"
+        dmz1["color"] = "orange"
         dmz1["timestamp"] = "2022-11-11T12:34:56"
         self.assertEqual(self.client.updateElement(dmz1), True)
         elements = self.client.getElements()
@@ -120,7 +126,7 @@ class TestRestApi(unittest.TestCase):
         url = self.client.addElement(dmz1)
         self.assertEqual(url, "/element/dmz_1")
         self.assertEqual(self.client.deleteElement("dmz_1"), True)
-        dmz1["color"] = "green"
+        dmz1["color"] = "orange"
         dmz1["timestamp"] = "2022-11-11T12:34:56"
         self.assertEqual(self.client.updateElement(dmz1), False)
         elements = self.client.getElements()
@@ -208,8 +214,8 @@ class TestRestApi(unittest.TestCase):
         self.assertEqual(resp["wordpress_1"], "/element/wordpress_1")
         # This would be a realistic use of bulk updates as node status changes
         # during a pentest
-        elements[0]["color"] = "green"
-        elements[1]["color"] = "green"
+        elements[0]["color"] = "orange"
+        elements[1]["color"] = "orange"
         resp = self.client.uploadElements(elements)
         self.assertEqual(len(resp), 2)
         self.assertEqual(resp["dmz_1"], "/element/dmz_1")
@@ -219,10 +225,10 @@ class TestRestApi(unittest.TestCase):
         self.assertEqual(len(elements), 2)
         elem = self._findElement(elements, "dmz_1")
         self.assertIsNotNone(elem)
-        self.assertEqual(elem["color"], "green")
+        self.assertEqual(elem["color"], "orange")
         elem = self._findElement(elements, "wordpress_1")
         self.assertIsNotNone(elem)
-        self.assertEqual(elem["color"], "green")
+        self.assertEqual(elem["color"], "orange")
     
     def test_upload_partial_success(self):
         elements = [json.loads(self.DMZ_1), json.loads(self.WORDPRESS_1)]
@@ -232,7 +238,7 @@ class TestRestApi(unittest.TestCase):
         self.assertEqual(resp["wordpress_1"], "/element/wordpress_1")
         # This would be a realistic use of bulk updates as node status changes
         # during a pentest
-        elements[0]["color"] = "green"
+        elements[0]["color"] = "orange"
         elements[1] = json.loads(self.SSH_TUNNEL_1)
         resp = self.client.uploadElements(elements)
         self.assertEqual(len(resp), 2)
@@ -243,7 +249,7 @@ class TestRestApi(unittest.TestCase):
         self.assertEqual(len(elements), 3)
         elem = self._findElement(elements, "dmz_1")
         self.assertIsNotNone(elem)
-        self.assertEqual(elem["color"], "green")
+        self.assertEqual(elem["color"], "orange")
         elem = self._findElement(elements, "wordpress_1")
         self.assertIsNotNone(elem)
         self.assertEqual(elem["color"], "red")
