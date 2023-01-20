@@ -33,7 +33,7 @@
             },
             "then": {
                 "properties": {
-                    "endpoint_type": { "enum": ["router", "switch", "wap", "firewall", "server", "workstation", "iot_device", "ics_device"] },
+                    "endpoint_type": { "enum": ["router", "switch", "wap", "firewall", "server", "workstation", "iot_device", "ics_device", "phone"] },
                     "os_type": { "enum": ["windows", "linux", "macosx", "android", "ios", "unknown"] },
                     "network": { "type": "string" },
                     "interfaces": {
