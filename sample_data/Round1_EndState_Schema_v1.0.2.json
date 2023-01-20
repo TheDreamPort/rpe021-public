@@ -1,0 +1,511 @@
+[
+    {
+        "id": "operations",
+        "timestamp": "2023-01-20T07:46:11",
+        "label": "Operations",
+        "color": "blue",
+        "data": "",
+        "elem_type": "network",
+        "cidr_block": "123.45.67.0/24",
+        "endpoint_type": null,
+        "os_type": null,
+        "network": null,
+        "interfaces": null,
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "msf1",
+        "timestamp": "2023-01-20T07:47:41",
+        "label": "Metasploit",
+        "color": "red",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "linux",
+        "network": "operations",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "msf1_eth0",
+                "ipv4": "123.45.67.101",
+                "ipv6": null,
+                "mac": "00:0c:29:12:34:56"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "dmz",
+        "timestamp": "2023-01-20T07:48:11",
+        "label": "DMZ",
+        "color": "red",
+        "data": "",
+        "elem_type": "network",
+        "cidr_block": "192.168.10.0/24",
+        "endpoint_type": null,
+        "os_type": null,
+        "network": null,
+        "interfaces": null,
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "wordpress",
+        "timestamp": "2023-01-20T07:51:51",
+        "label": "WordPress Server",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "server",
+        "os_type": "linux",
+        "network": "dmz",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "wordpress_eth0",
+                "ipv4": "98.76.54.32",
+                "ipv6": null,
+                "mac": null
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "dmz_router",
+        "timestamp": "2023-01-20T07:48:11",
+        "label": "extrouter",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "router",
+        "os_type": "linux",
+        "network": "dmz",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "dmz_router_eth0",
+                "ipv4": "98.76.54.32",
+                "ipv6": null,
+                "mac": "00:0c:29:02:03:04"
+            },
+            {
+                "label": "eth1",
+                "interface_id": "dmz_router_eth1",
+                "ipv4": "192.168.10.1",
+                "ipv6": null,
+                "mac": "00:0c:29:03:04:05"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "router2",
+        "timestamp": "2023-01-20T07:50:01",
+        "label": "introuter",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "router",
+        "os_type": "linux",
+        "network": "dmz",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "router2_eth0",
+                "ipv4": "192.168.10.2",
+                "ipv6": null,
+                "mac": "00:0c:29:98:ab:cd"
+            },
+            {
+                "label": "eth1",
+                "interface_id": "router2_eth1",
+                "ipv4": "192.168.30.1",
+                "ipv6": null,
+                "mac": "00:0c:29:ab:cd:ef"
+            },
+            {
+                "label": "eth2",
+                "interface_id": "router2_eth2",
+                "ipv4": "192.168.20.1",
+                "ipv6": null,
+                "mac": "00:0c:29:67:89:ab"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.0/24",
+        "timestamp": "2023-01-20T07:48:31",
+        "label": "192.168.30.0/24",
+        "color": "red",
+        "data": "",
+        "elem_type": "network",
+        "cidr_block": "192.168.30.0/24",
+        "endpoint_type": null,
+        "os_type": null,
+        "network": null,
+        "interfaces": null,
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.10",
+        "timestamp": "2023-01-20T07:48:31",
+        "label": "192.168.30.10",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "linux",
+        "network": "192.168.30.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.30.10_eth0",
+                "ipv4": "192.168.30.10",
+                "ipv6": null,
+                "mac": "00:0c:29:00:00:10"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.11",
+        "timestamp": "2023-01-20T07:48:31",
+        "label": "192.168.30.11",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "linux",
+        "network": "192.168.30.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.30.11_eth0",
+                "ipv4": "192.168.30.11",
+                "ipv6": null,
+                "mac": "00:0c:29:00:00:11"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.12",
+        "timestamp": "2023-01-20T07:48:31",
+        "label": "192.168.30.12",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "linux",
+        "network": "192.168.30.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.30.12_eth0",
+                "ipv4": "192.168.30.12",
+                "ipv6": null,
+                "mac": "00:0c:29:00:00:12"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.13",
+        "timestamp": "2023-01-20T07:48:31",
+        "label": "192.168.30.13",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "linux",
+        "network": "192.168.30.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.30.13_eth0",
+                "ipv4": "192.168.30.10",
+                "ipv6": null,
+                "mac": "00:0c:29:00:00:13"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.14",
+        "timestamp": "2023-01-20T07:48:31",
+        "label": "192.168.30.14",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "linux",
+        "network": "192.168.30.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.30.14_eth0",
+                "ipv4": "192.168.30.14",
+                "ipv6": null,
+                "mac": "00:0c:29:00:00:14"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.30",
+        "timestamp": "2023-01-20T07:51:41",
+        "label": "bob-winxp",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "windows",
+        "network": "192.168.30.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.30.30_eth0",
+                "ipv4": "192.168.30.30",
+                "ipv6": null,
+                "mac": "00:0c:29:00:00:30"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.31",
+        "timestamp": "2023-01-20T07:49:41",
+        "label": "192.168.30.31",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "windows",
+        "network": "192.168.30.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.30.31_eth0",
+                "ipv4": "192.168.30.31",
+                "ipv6": null,
+                "mac": "00:0c:29:00:00:31"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.32",
+        "timestamp": "2023-01-20T07:49:41",
+        "label": "alice-w10",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "windows",
+        "network": "192.168.30.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.30.32_eth0",
+                "ipv4": "192.168.30.32",
+                "ipv6": null,
+                "mac": "00:0c:29:00:00:32"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.33",
+        "timestamp": "2023-01-20T07:49:41",
+        "label": "charlie-dev",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "windows",
+        "network": "192.168.30.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.30.33_eth0",
+                "ipv4": "192.168.30.33",
+                "ipv6": null,
+                "mac": "00:0c:29:00:00:33"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.30.34",
+        "timestamp": "2023-01-20T07:49:41",
+        "label": "192.168.30.34",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "workstation",
+        "os_type": "windows",
+        "network": "192.168.30.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.30.34_eth0",
+                "ipv4": "192.168.30.34",
+                "ipv6": null,
+                "mac": "00:0c:29:00:00:34"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.20.0/24",
+        "timestamp": "2023-01-20T07:50:01",
+        "label": "192.168.20.0/24",
+        "color": "red",
+        "data": "",
+        "elem_type": "network",
+        "cidr_block": "192.168.20.0/24",
+        "endpoint_type": null,
+        "os_type": null,
+        "network": null,
+        "interfaces": null,
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "192.168.20.100",
+        "timestamp": "2023-01-20T07:51:21",
+        "label": "PDC",
+        "color": "green",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "server",
+        "os_type": "windows",
+        "network": "192.168.20.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.20.100_eth0",
+                "ipv4": "192.168.20.100",
+                "ipv6": null,
+                "mac": "00:0c:29:00:10:34"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "lp1",
+        "timestamp": "2023-01-20T07:51:21",
+        "label": "LP",
+        "color": "red",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "server",
+        "os_type": "linux",
+        "network": "operations",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "lp1_eth0",
+                "ipv4": "123.45.67.105",
+                "ipv6": null,
+                "mac": "00:0c:29:12:ab:cd"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    },
+    {
+        "id": "pdc_c2",
+        "timestamp": "2023-01-20T07:51:21",
+        "label": "PDC C2",
+        "color": "red",
+        "data": "",
+        "elem_type": "connection",
+        "cidr_block": null,
+        "endpoint_type": null,
+        "os_type": null,
+        "network": null,
+        "interfaces": null,
+        "interface_from": "192.168.20.100_eth0",
+        "interface_to": "lp1_eth0",
+        "line_type": "solid"
+    },
+    {
+        "id": "192.168.20.102",
+        "timestamp": "2023-01-20T07:52:51",
+        "label": "gitlab",
+        "color": "gray",
+        "data": "",
+        "elem_type": "endpoint",
+        "cidr_block": null,
+        "endpoint_type": "server",
+        "os_type": "linux",
+        "network": "192.168.20.0/24",
+        "interfaces": [
+            {
+                "label": "eth0",
+                "interface_id": "192.168.20.102_eth0",
+                "ipv4": "192.168.20.102",
+                "ipv6": null,
+                "mac": "00:0c:29:20:10:02"
+            }
+        ],
+        "interface_from": null,
+        "interface_to": null,
+        "line_type": null
+    }
+]
