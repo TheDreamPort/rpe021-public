@@ -41,8 +41,8 @@ The REST API can then be invoked as desired:
 
 ### Server Validation and REST Client
 
- * Repo link: [validate_server.py](/server_validation_v1.1/validate_server.py)
- * Repo link: [rpe21_client.py](/server_validation_v1.1/rpe21_client.py)
+ * Repo link: [validate_server.py](/server_validation/validate_server.py)
+ * Repo link: [rpe21_client.py](/server_validation/rpe21_client.py)
 
 The REST API server validation script uses the Python `unittest` framework to validate compatibility of a specified REST API implementation with expectations for RPE-021. The only non-standard dependency is `requests`, which is identified in the [requirements.txt](/server_validation_v1.0/requirements.txt) file and is easily installed via `pip`.
 
@@ -58,6 +58,14 @@ If necessary, edit `validate_server.py` where indicated to add any custom header
 **IMPORTANT**: If you believe any changes need to be made to `rpe021_client.py` for compatibility with your REST API, please [contact us](mailto:rpe-submission@dreamport.tech) ASAP! We are NOT planning to accommodate custom REST client scripts -- we plan to use `rpe21_client.py` as is for all competitors, supplying only the base URL and a map of any custom HTTP headers.
 
 **UPDATE 1/10/2023**: Minor update to the `rpe21_client.py` script to support HTTPS with self-signed certificates, i.e., suppressing cert validation warnings.
+
+### Data Generation
+
+ * Repo link: [gen_network.py](/gen_network.py)
+
+This script generates a network with a specified name and CIDR block, and populates it with randomly-generated endpoints of types specified on the command line (e.g., 1 Linux workstation, 2 Windows servers, 3 routers, 4 phones). It also (optionally) creates two connections between randomly-selected endpoints to demonstrate valid JSON data. DreamPort used this script in creation of some of the Main Event scenarios, and it evolved to be useful/stable enough to share.
+
+> NOTE: Most of these scripts have only been tested on Ubuntu 20.04 and Linux Mint 21 with Python 3.7 and 3.10. YMMV on other operating systems, Python versions, etc.
 
 ## Questions?
 
